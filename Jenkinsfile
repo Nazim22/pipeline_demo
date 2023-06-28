@@ -6,15 +6,12 @@ pipeline {
             steps {
                 // Checkout the source code from the repository
                 git 'https://github.com/Nazim22/Capstone_Project.git'
+
+                
+                // Echo a message after checkout is completed
+                  echo 'Checkout completed'
             }
         }
         
-        stage('Build') {
-            steps {
-                // Install dependencies and build the Python application
-                sh 'pip install -r requirements.txt'
-                sh 'python setup.py build'
-            }
-        }
-        
+    
        
