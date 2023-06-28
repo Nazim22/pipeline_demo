@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 pandas
 scikit-learn
+=======
+pandas
+scikit-learn
+>>>>>>> origin/main
 xgboost
