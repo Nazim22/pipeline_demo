@@ -40,4 +40,8 @@ class TestApp(unittest.TestCase):
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     unittest.main()
+=======
+    unittest.main()
+>>>>>>> 1960a9d0a14f47fdcc6145e6a8adef8b70492d08
