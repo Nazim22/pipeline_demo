@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'Github-cred', url: 'https://github.com/Nazim22/Capstone_Project'
+                withCredentials([usernamePassword(credentialsId: 'Github-cred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                    git url: 'https://github.com/Nazim22/Capstone_Project', credentialsId: 'Github-cred'
+                }
             }
         }
 
