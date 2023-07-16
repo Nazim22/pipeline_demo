@@ -9,9 +9,14 @@ pipeline {
       }
     }
 
-        stage('Test') {
+         stage('Install Dependencies') {
             steps {
                 sh 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Test') {
+            steps {
                 sh '/usr/bin/python3 -m unittest test_app.py'
 
             }
