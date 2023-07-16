@@ -1,34 +1,36 @@
 # test_app.py
-import streamlit as st
-import car_price_predictor  # Assuming your Streamlit app script is named app.py
+import pytest
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
-# Import the pytest_streamlit fixture
-from pytest_streamlit import streamlit_tester
+@pytest.fixture(scope="module")
+def browser():
+    # Initialize the Selenium WebDriver
+    driver = webdriver.Chrome()
+    yield driver
+    driver.quit()
 
-def test_prediction():
-    # Define test inputs
-    test_inputs = {
-        'What is the current Ex-Showroom price of the car': 10.0,
-        'What is the distance completed by the car in Miles?': 5000,
-        'What is the Fuel type of the car?': 'Petrol',
-        'Are you a Dealer or Individual?': 'Dealer',
-        'What is the Transmission Type?': 'Manual',
-        'Number of Owners the car previously had?': 1,
-        'In which year car was purchased?': 2018
-    }
+def test_prediction(browser):
+    # Open the Streamlit app in the browser
+    browser.get('http://localhost:8501')  # Replace with the URL of your Streamlit app
 
-    # Simulate the Streamlit app's behavior using Pytest-Streamlit
-    with streamlit_tester(runner=app):
-        # Set the inputs for the test
-        for key, value in test_inputs.items():
-            st.text_input(key, value)
+    # Find and interact with input elements
+    input1 = browser.find_element_by_name('What is the current Ex-Showroom price of the car')
+    input1.send_keys('10.0')
 
-        # Simulate clicking the 'Predict' button
-        st.button('Predict')
+    input2 = browser.find_element_by_name('What is the distance completed by the car in Miles?')
+    input2.send_keys('5000')
 
-        # Get the result of the prediction
-        prediction_result = st.text('You can sell your car for')
+    # Add more interactions for other input elements as needed...
 
-        # Ensure the result is as expected
-        expected_result = 'You can sell your car for 5.00 lakhs'
-        assert prediction_result == expected_result
+    # Click the 'Predict' button
+    predict_button = browser.find_element_by_name('Predict')
+    predict_button.click()
+
+    # Wait for the result to load
+    result_element = browser.find_element_by_name('You can sell your car for')
+    result = result_element.text
+
+    # Ensure the result is as expected
+    expected_result = 'You can sell your car for 5.00 lakhs'
+    assert result == expected_result
