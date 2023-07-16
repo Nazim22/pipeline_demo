@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'jenkins', url: 'https://github.com/Nazim22/Capstone_Project'
+                git credentialsId: 'Github-cred', url: 'https://github.com/Nazim22/Capstone_Project'
             }
         }
 
@@ -27,5 +27,6 @@ pipeline {
         }
     }
 }
+
 
 
