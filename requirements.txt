@@ -2,4 +2,7 @@ pandas
 scikit-learn
 xgboost
 streamlit
+pytest
+pytest-streamlit
+
 
