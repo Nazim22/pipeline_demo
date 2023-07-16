@@ -1,6 +1,6 @@
 # test_app.py
 import streamlit as st
-import app  # Assuming your Streamlit app script is named app.py
+import car_price_predictor  # Assuming your Streamlit app script is named app.py
 
 # Import the pytest_streamlit fixture
 from pytest_streamlit import streamlit_tester
