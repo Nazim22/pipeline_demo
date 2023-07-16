@@ -24,9 +24,10 @@ pipeline {
 
         stage('Build and Push Docker Image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-cred', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
-                }
+                  withCredentials([string(credentialsId: 'docker-cred', variable: 'DOCKER_PASSWORD')]) {
+                  sh 'echo $DOCKER_PASSWORD | docker login -u dockeruser2068 --password-stdin'
+                   }
+                  
                 sh 'docker build -t my_python_app .'
                 sh 'docker tag my_python_app dockeruser2068/my_python_app:V1.0'
                 sh 'docker push dockeruser2068/my_python_app:V1.0'
