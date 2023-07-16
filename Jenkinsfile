@@ -2,13 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'Github-cred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-                    git url: 'https://github.com/Nazim22/Capstone_Project', credentialsId: 'Github-cred'
-                }
-            }
-        }
+         stage('Checkout') {
+      steps {
+        sh 'echo passed'
+        //git branch: 'main', url: 'https://github.com/Nazim22/Capstone_Project.git'
+      }
+    }
 
         stage('Test') {
             steps {
