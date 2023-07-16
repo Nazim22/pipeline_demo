@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # -*- coding: utf-8 -*-
 """
 Spyder Editor
@@ -88,7 +87,6 @@ if __name__ == '__main__':
 
 
 
-=======
 # -*- coding: utf-8 -*-
 """
 Spyder Editor
@@ -178,4 +176,3 @@ if __name__ == '__main__':
 
 
 
->>>>>>> origin/main
